@@ -1,6 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:loginpage/service/responseStructure/userStruct.dart';
+
 
 class StarService {
   static String _url = "http://10.0.2.2:1234/api/v1/user";
@@ -38,7 +40,10 @@ class StarService {
     );
     if (response.statusCode == 200) {
       var dbResponse = json.decode(response.body);
+      print(response.body);
       return dbResponse['token'];
+    }else if(response.statusCode == 401){
+      return "Account doesn't exist!.";
     } else {
       print("Something went wrong!.");
       return null;
@@ -54,12 +59,20 @@ class StarService {
     );
     if (response.statusCode == 200) {
       var dbResponse = json.decode(response.body);
-      print(dbResponse);
-      return (dbResponse['url']);
+      // List<IPResponse> ipResponse = _parseResponse(response.body);
+      // print(dbResponse);
+      return response.body;
+      // return (dbResponse['url']);
     } else {
       print("Something went wrong!.");
       return null;
     }
+  }
+
+  static List<IPResponse> _parseResponse(String responseBody) {
+    // print("_parseResponse: " + responseBody);
+    // final parsed = json.decode(responseBody).cast<String, dynamic>();
+    // return parsed.map<IPResponse>((json) => IPResponse.fromJson(json)).toList();
   }
 
 }
