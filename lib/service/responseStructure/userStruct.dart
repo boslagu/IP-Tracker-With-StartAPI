@@ -1,20 +1,16 @@
 
-class User {
-  int UserID;
-  String Name;
-  String Username;
-  String Role;
-  String Password;
+class IPResponse {
+  String url;
+  String country;
+  String city;
 
-  User({ this.UserID, this.Name, this.Username, this.Role, this.Password});
+  IPResponse({ this.url, this.country, this.city});
 
-  factory User.fromJson(Map<String, dynamic> json){
-    return User(
-      UserID : int.parse(json["id"]) as int,
-      Name : json["name"] as String,
-      Username : json["username"] as String,
-      Role : json["role"] as String,
-      Password : json["password"] as String,
+  factory IPResponse.fromJson(Map<String, dynamic> json){
+    return IPResponse(
+      url : json["name"] as String,
+      country : json["username"] as String,
+      city : json["role"] as String,
     );
   }
 }
