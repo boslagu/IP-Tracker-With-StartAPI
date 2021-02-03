@@ -58,7 +58,14 @@ class _SignUpState extends State<SignUp> {
     queryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registration"),
+        centerTitle:true,
+        title: Text(
+            "User Registration",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+
+          ),
+        ),
       ),
       body: Builder(builder: (context){
         return Container(

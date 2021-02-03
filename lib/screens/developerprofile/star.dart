@@ -13,6 +13,7 @@ class _StarState extends State<Star> {
     queryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle:true,
         title: Text("Developer Profile"),
       ),
       body: Container(

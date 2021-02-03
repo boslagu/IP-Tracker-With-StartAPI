@@ -20,6 +20,18 @@ class _ApiScreenState extends State<ApiScreen> {
 
   _ApiScreenState(this.token);
 
+
+
+  void _showSnackBar(BuildContext context, String title){
+    final snackBar = new SnackBar(
+        content: new Text(
+          title,
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.red);
+    Scaffold.of(context).showSnackBar(snackBar);
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -40,6 +52,7 @@ class _ApiScreenState extends State<ApiScreen> {
     queryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle:true,
         title: Text("Main Screen"),
       ),
       body: Builder(builder: (context){
@@ -124,15 +137,22 @@ class _ApiScreenState extends State<ApiScreen> {
                         //   });
                         // });
 
-                        String responseBody;
-                        responseBody = await StarService.locatorService(_data.text, token);
-                        print(json.decode(responseBody)['url']);
-                        setState(() {
-                          _ipNames.add(_IpName.text);
-                          _country.add(json.decode(responseBody)['country']);
-                          _ipList.add(json.decode(responseBody)['url']);
+                        if (_data.text.isNotEmpty && _IpName.text.isNotEmpty){
+                          String responseBody;
+                          responseBody = await StarService.locatorService(_data.text, token);
+                          setState(() {
+                            if (responseBody != null){
+                              _ipNames.add(_IpName.text);
+                              _country.add(json.decode(responseBody)['country']);
+                              _ipList.add(json.decode(responseBody)['url']);
+                            }else{
+                              _showSnackBar(context,"INVALID DOMAIN OR IP!");
+                            }
+                          });
+                        }else{
+                          _showSnackBar(context, "All fields required!.");
+                        }
                           // print(_responseUrl.toString());
-                        });
                       },
                     ),
                   ),
@@ -158,6 +178,9 @@ class _ApiScreenState extends State<ApiScreen> {
                       itemBuilder: (BuildContext context, int index) {
                         return Card(
                             child: InkWell(
+                              onLongPress: (){
+                                print("delete");
+                              },
                               onTap: ()async{
                                 if (await canLaunch(_ipList[index])) {
                                   await launch(_ipList[index]);

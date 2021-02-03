@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Scaffold.of(context).showSnackBar(snackBar);
   }
 //ito ang menu ng drawer
-  List<String> _myList = ["sir Replan","sir Star","sir Rommel","Si SIr Necir lang malakas"];
+  List<String> _myList = ["Replan","Bituin","Lagurin","Rebellion"];
 
   @override
   Widget build(BuildContext context) {
@@ -78,22 +78,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: (){
 
                     //ito ang pag pili ng text screen
-                    if (_myList[i].toString() == "sir Replan"){
+                    if (_myList[i].toString() == "Replan"){
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Replan()),
                       );
-                    }else if (_myList[i].toString() == "sir Star"){
+                    }else if (_myList[i].toString() == "Bituin"){
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Star()),
                       );
-                    }else if (_myList[i].toString() == "sir Rommel") {
+                    }else if (_myList[i].toString() == "Lagurin") {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Rommel()),
                       );
-                    }else if (_myList[i].toString() == "Si SIr Necir lang malakas") {
+                    }else if (_myList[i].toString() == "Rebellion") {
                       Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Necir()),
