@@ -25,7 +25,6 @@ class _RommelState extends State<Rommel> {
         ),
         child: Center(
           child: Column(
-
             children: [
               Padding(padding: EdgeInsets.all(15.0),),
               Container(

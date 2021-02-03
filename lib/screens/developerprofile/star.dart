@@ -32,7 +32,7 @@ class _StarState extends State<Star> {
               Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top:70.0, left:20.0,right:20.0),
+                      padding: const EdgeInsets.only(top:70.0, left:20.0,right:20.0),
                     child: Container(
                       decoration:BoxDecoration(
                         boxShadow:
@@ -53,6 +53,7 @@ class _StarState extends State<Star> {
 
                 ),
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
