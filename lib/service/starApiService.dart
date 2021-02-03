@@ -5,8 +5,9 @@ import 'package:loginpage/service/responseStructure/userStruct.dart';
 
 
 class StarService {
-  static String _url = "http://192.168.137.70:1234/api/v1/user";
-/*"http://10.0.2.2:1234/api/v1/user"*/
+  static String _url =
+      // "http://192.168.137.70:1234/api/v1/user";
+"http://10.0.2.2:1234/api/v1/user";
   static Future<String> createUserService(String username, String password,
       String name) async {
     var response = await http.post(_url,
@@ -21,18 +22,20 @@ class StarService {
     );
 
     print(response.body);
+    var dbResponse = json.decode(response.body);
     if (response.statusCode == 201) {
-      var dbResponse = json.decode(response.body);
       return dbResponse['status'];
       // return null;aaa
-    } else {
+    }else if (response.statusCode == 400) {
+      return dbResponse['message'];
+    }else {
       print("Something went wrong!.");
       return null;
     }
   }
 
   static Future<String> signUserService(String username, String password) async {
-    var response = await http.post("http://192.168.137.70:1234/api/v1/user/auth/",
+    var response = await http.post("http://10.0.2.2:1234/api/v1/user/auth/",
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -54,7 +57,7 @@ class StarService {
   }
 
   static Future<String> locatorService(String domain, String token) async {
-    var response = await http.get("http://192.168.137.70:1234/api/v1/ip/" + domain,
+    var response = await http.get("http://10.0.2.2::1234/api/v1/ip/" + domain,
       headers: <String, String>{
         'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json; charset=UTF-8',

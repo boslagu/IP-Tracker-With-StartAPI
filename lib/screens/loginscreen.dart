@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loginpage/screens/apiscreen.dart';
-import 'developerprofile/replan.dart';
-import 'developerprofile/star.dart';
-import 'developerprofile/rommel.dart';
-import 'developerprofile/necir.dart';
+import 'devProfile.dart';
 import 'signup.dart';
 import 'package:loginpage/service/starApiService.dart';
 
@@ -81,22 +78,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (_myList[i].toString() == "Replan"){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Replan()),
+                        MaterialPageRoute(builder: (context) => Replan("rareplan")),
                       );
                     }else if (_myList[i].toString() == "Bituin"){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Star()),
+                        MaterialPageRoute(builder: (context) => Replan("johnarvin0013")),
                       );
                     }else if (_myList[i].toString() == "Lagurin") {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Rommel()),
+                        MaterialPageRoute(builder: (context) => Replan("boslagu")),
                       );
                     }else if (_myList[i].toString() == "Rebellion") {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Necir()),
+                          MaterialPageRoute(builder: (context) => Replan("JohnRebellion")),
                       );
                     };
                   },

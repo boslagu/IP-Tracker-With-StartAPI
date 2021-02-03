@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:loginpage/screens/developerprofile/star.dart';
 import 'package:loginpage/service/starApiService.dart';
 import 'package:flutter/services.dart';
 
@@ -236,6 +235,9 @@ class _SignUpState extends State<SignUp> {
                               status = await StarService.createUserService(_username.text, _password.text, _name.text);
                               if (status!=null && status == 'success'){
                                 this._showSnack(context, "Account Successfully Created!.");
+                              }else if (status!=null && status == 'Required Mininum Length of Username, Name and Password is 3, 3 and 8 respectively'){
+                                print(status);
+                                this._showSnackBar(context, status);
                               }
                             }else{
                               this._showSnackBar(context, "Password and Confirm Password does not match!.");
